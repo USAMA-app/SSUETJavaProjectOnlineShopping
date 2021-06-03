@@ -127,6 +127,7 @@ public class DummyModel implements Model {
         boolean flag = true;
         try
         {
+ synchronized(this){
             PrintWriter outputFile = new PrintWriter(new FileWriter("orders.txt",true));
             outputFile.print(order.getOrderId()+",");
             List<CartItem> cartList = order.getCart().getList();
@@ -143,6 +144,7 @@ public class DummyModel implements Model {
                                 + order.getCustomer().phoneNumber + ",");
             outputFile.println(order.getPurchasedTime());
             outputFile.close();
+}
         }
         catch (IOException e)
         {
